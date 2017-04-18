@@ -1,5 +1,6 @@
 package service;
 
+import domain.ShoppingCart;
 import domain.Stuff;
 
 import java.math.BigDecimal;
@@ -12,8 +13,11 @@ public class CheckoutService {
 
     public BigDecimal checkout(List<Stuff> stuffList) {
         BigDecimal totalPrice = BigDecimal.ZERO;
+
+        ShoppingCart currentShoppingCart = new ShoppingCart();
         for(Stuff stuff : stuffList) {
-            totalPrice.add(stuff.getPrice());
+            currentShoppingCart.addStuff(stuff);
+            totalPrice.add(stuff.getPrice(currentShoppingCart));
         }
 
         return totalPrice;

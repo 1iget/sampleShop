@@ -11,4 +11,15 @@ public class Apple extends Stuff{
     public BigDecimal getPrice() {
         return new BigDecimal(60);
     }
+
+    @Override
+    public BigDecimal getPrice(ShoppingCart shoppingCart) {
+        Long numberOfCurrentStuff = shoppingCart.getNumberOfStaff(this.getClass());
+
+        if(numberOfCurrentStuff % 2 == 0) {
+            return new BigDecimal(0);
+        } else {
+            return getPrice();
+        }
+    }
 }

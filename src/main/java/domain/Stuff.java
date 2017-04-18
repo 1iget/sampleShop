@@ -8,5 +8,6 @@ import java.math.BigDecimal;
 public abstract class Stuff {
 
     public abstract BigDecimal getPrice();
+    public abstract BigDecimal getPrice(ShoppingCart shoppingCart);
 
 }
